@@ -13,7 +13,7 @@
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
- $
+  $
  */
 
 /**
@@ -29,8 +29,8 @@
 
 #include "mltypes.h"
 #include "mlsl.h"
-#include "mpu.h"
-#include "mpu6050b1.h"
+#include <linux/mpu.h>
+#include "mpu3050.h"
 
 #include "log.h"
 

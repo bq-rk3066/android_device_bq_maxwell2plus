@@ -22,12 +22,6 @@ TARGET_BOOTLOADER_BOARD_NAME := bq_Maxwell2Plus
 
 TARGET_OTA_ASSERT_DEVICE := maxwell2plus,bq_Maxwell2Plus
 
-# Audio
-TARGET_PROVIDES_LIBAUDIO := true
-
-# Sensors
-TARGET_PROVIDES_LIBSENSORS := true
-
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/bq/maxwell2plus/bluetooth
 
@@ -41,5 +35,7 @@ BOARD_FLASH_BLOCK_SIZE := 16384
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/bq/maxwell2plus
 TARGET_KERNEL_CONFIG := cyanogenmod_maxwell2plus_defconfig
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
-BOARD_USES_UNCOMPRESSED_BOOT := true
+
+# Recovery
+BOARD_CUSTOM_GRAPHICS := ../../../device/bq/maxwell2plus/recovery/graphics.c graphics_overlay.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/bq/maxwell2plus/recovery/recovery_keys.c

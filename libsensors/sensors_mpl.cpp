@@ -35,9 +35,13 @@
 #include "sensors.h"
 #include "MPLSensor.h"
 
+//#include "MPLSensorSysApi.h"
+
 /*****************************************************************************/
 
 #define DELAY_OUT_TIME 0x7FFFFFFF
+
+#define LIGHT_SENSOR_POLLTIME    2000000000
 
 #define SENSORS_ROTATION_VECTOR  (1<<ID_RV)
 #define SENSORS_LINEAR_ACCEL     (1<<ID_LA)
@@ -55,6 +59,7 @@
 #define SENSORS_MAGNETIC_FIELD_HANDLE   (ID_M)
 #define SENSORS_ORIENTATION_HANDLE      (ID_O)
 
+
 #define AKM_FTRACE 0
 #define AKM_DEBUG 0
 #define AKM_DATA 0
@@ -66,35 +71,37 @@ static const struct sensor_t sSensorList[] = {
       { "MPL rotation vector",
         "Invensense",
         1, SENSORS_ROTATION_VECTOR_HANDLE,
-        SENSOR_TYPE_ROTATION_VECTOR, 10240.0f, 1.0f, 0.5f, 20000,{ } },
+        SENSOR_TYPE_ROTATION_VECTOR, 10240.0f, 1.0f, 0.5f, 20000, 0, 0,{ } },
       { "MPL linear accel",
         "Invensense",
         1, SENSORS_LINEAR_ACCEL_HANDLE,
-        SENSOR_TYPE_LINEAR_ACCELERATION, 10240.0f, 1.0f, 0.5f, 20000,{ } },
+        SENSOR_TYPE_LINEAR_ACCELERATION, 10240.0f, 1.0f, 0.5f, 20000, 0, 0,{ } },
       { "MPL gravity",
         "Invensense",
         1, SENSORS_GRAVITY_HANDLE,
-        SENSOR_TYPE_GRAVITY, 10240.0f, 1.0f, 0.5f, 20000,{ } },
+        SENSOR_TYPE_GRAVITY, 10240.0f, 1.0f, 0.5f, 20000, 0, 0,{ } },
       { "MPL Gyro",
         "Invensense",
         1, SENSORS_GYROSCOPE_HANDLE,
-        SENSOR_TYPE_GYROSCOPE, 10240.0f, 1.0f, 0.5f, 20000,{ } },
+        SENSOR_TYPE_GYROSCOPE, 10240.0f, 1.0f, 0.5f, 20000, 0, 0,{ } },
       { "MPL accel",
         "Invensense",
         1, SENSORS_ACCELERATION_HANDLE,
-        SENSOR_TYPE_ACCELEROMETER, 10240.0f, 1.0f, 0.5f, 20000,{ } },
+        SENSOR_TYPE_ACCELEROMETER, 10240.0f, 1.0f, 0.5f, 20000, 0, 0,{ } },
       { "MPL magnetic field",
         "Invensense",
         1, SENSORS_MAGNETIC_FIELD_HANDLE,
-        SENSOR_TYPE_MAGNETIC_FIELD, 10240.0f, 1.0f, 0.5f, 20000,{ } },
+        SENSOR_TYPE_MAGNETIC_FIELD, 10240.0f, 1.0f, 0.5f, 20000, 0, 0,{ } },
       { "MPL Orientation (android deprecated format)",
-          "Invensense",
-          1, SENSORS_ORIENTATION_HANDLE,
-          SENSOR_TYPE_ORIENTATION, 360.0f, 1.0f, 9.7f, 20000,{ } },
+        "Invensense",
+        1, SENSORS_ORIENTATION_HANDLE,
+        SENSOR_TYPE_ORIENTATION, 360.0f, 1.0f, 9.7f, 20000, 0, 0,{ } },
 };
+
 
 static int open_sensors(const struct hw_module_t* module, const char* id,
                         struct hw_device_t** device);
+
 
 static int sensors__get_sensors_list(struct sensors_module_t* module,
                                      struct sensor_t const** list)
