@@ -24,9 +24,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
 
-# Config files
+# Prebuilt
 PRODUCT_COPY_FILES += \
-    device/bq/maxwell2plus/config/media_profiles.xml:system/etc/media_profiles.xml
+    device/bq/maxwell2plus/prebuilt/gps.conf:system/etc/gps.conf \
+    device/bq/maxwell2plus/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    device/bq/maxwell2plus/prebuilt/media_profiles.xml:system/etc/media_profiles.xml
 
 # Rootdir blob
 PRODUCT_COPY_FILES += \
